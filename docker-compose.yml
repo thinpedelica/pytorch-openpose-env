@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  openpose:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - 'driver': 'nvidia'
+            'capabilities': ['gpu']
+    volumes:
+      - ./model:/pytorch-openpose/model
+    command: sleep infinity 
